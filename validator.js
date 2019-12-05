@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const FormData = require('form-data');
 const fetch = require('node-fetch');
 const fs = require('fs');

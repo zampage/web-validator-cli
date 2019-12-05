@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Validates html/css files or directory",
   "main": "validator.js",
+  "bin": {
+    "wvc": "validator.js"
+  },
   "directories": {
     "example": "example"
   },
