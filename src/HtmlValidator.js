@@ -4,6 +4,7 @@ module.exports = class HtmlValidator extends Validator {
     constructor(url) {
         super(url);
         this.ext = '.html';
+        this.formFieldName = 'uploaded_file';
     }
 
     parseDocument(doc, file) {

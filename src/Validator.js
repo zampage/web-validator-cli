@@ -30,7 +30,7 @@ module.exports = class Validator {
                 .catch(err => console.log(chalk.red('\r\n', err)));
         } else {
             const files = this.getFilesToValidate(dirOrFile)
-            Promise.all(files.map(file => this.fetchDOM(file).then(doc => this.parseDocument(doc))))
+            Promise.all(files.map(file => this.fetchDOM(file).then(doc => this.parseDocument(doc, dirOrFile))))
                 .then(data => this.logTotalStats(data))
                 .catch(err => console.log(chalk.red('\r\n', err)));
         }
@@ -43,7 +43,7 @@ module.exports = class Validator {
     async fetchDOM(file) {
         // create formdata with file
         const data = new FormData();
-        data.append('uploaded_file', fs.createReadStream(file));
+        data.append(this.formFieldName, fs.createReadStream(file));
         
         // upload file to validator
         return fetch(this.url, {
@@ -51,6 +51,11 @@ module.exports = class Validator {
             body: data
         })
         .then(response => response.text())
+        .then(response => {
+            //console.log(response);
+            fs.writeFileSync('result.html', response)
+            return response;
+        })
         .then(htmlResponse => new JSDOM(htmlResponse))
         .then(dom => dom.window.document);
     }
