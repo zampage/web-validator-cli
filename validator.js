@@ -41,6 +41,11 @@ function parseFiles(dir) {
 
     // log the total stats of the validation
     parsedFiles.then(data => {
+        if (!data.length) {
+            console.log(chalk.red('\r\nError: No Files to validate found.'));
+            return;
+        } 
+
         console.log(chalk.bold(`\r\n${data.length} files validated.`));
         
         if (data.every(d => d.success)) {
