@@ -2,9 +2,9 @@
   "name": "web-validator-cli",
   "version": "1.0.0",
   "description": "Validates html/css files or directory",
-  "main": "validator.js",
+  "main": "bin/wvc.js",
   "bin": {
-    "wvc": "validator.js"
+    "wvc": "bin/wvc.js"
   },
   "directories": {
     "example": "example"
