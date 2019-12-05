@@ -51,11 +51,6 @@ module.exports = class Validator {
             body: data
         })
         .then(response => response.text())
-        .then(response => {
-            //console.log(response);
-            fs.writeFileSync('result.html', response)
-            return response;
-        })
         .then(htmlResponse => new JSDOM(htmlResponse))
         .then(dom => dom.window.document);
     }
