@@ -4,6 +4,19 @@ Validate web pages (currently .html and .css files) on command line.
 
 The official Validators of W3C are used for this process.
 
+## Usage
+
+```sh
+# validate single file
+wvc file.css
+
+# validate single file in directory
+wvc example/file.html
+
+# validate all files in directory
+wvc example
+```
+
 ## Currently supported Types
 
 - HTML: https://validator.w3.org
